@@ -17,28 +17,7 @@ export default class Account {
   password: string;
 
   @Column()
-  type: string;
-
-  @Column()
-  premdays: number;
-
-  @Column()
-  coins: number;
-
-  @Column()
-  lastday: number;
-
-  @Column()
-  proxy_id: number;
-
-  @Column()
-  key: number;
-
-  @Column()
-  blocked: number;
-
-  @Column()
-  rlname: number;
+  access: number;
 
   @ManyToMany(() => Role)
   @JoinTable({

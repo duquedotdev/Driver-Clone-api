@@ -10,10 +10,11 @@ export class AccountRoles1625928374369 implements MigrationInterface {
           { name: 'name', type: 'varchar' },
           { name: 'email', type: 'varchar', isUnique: true },
           { name: 'password', type: 'varchar' },
-          { name: 'blocked', type: 'boolean', default: false },
+          { name: 'access', type: 'boolean', default: false },
 
           { name: 'created_at', type: 'timestamp', default: 'now()' },
           { name: 'updated_at', type: 'timestamp', default: 'now()' },
+          { name: 'deleted_at', type: 'timestamp', default: null, isNullable: true },
         ],
       }),
     );
