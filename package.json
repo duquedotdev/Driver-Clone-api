@@ -1,0 +1,8 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Progamo/Driver-Clone-api.git",
+  "author": "Manoel Neto <maguserv@gmail.com>",
+  "license": "MIT"
+}
