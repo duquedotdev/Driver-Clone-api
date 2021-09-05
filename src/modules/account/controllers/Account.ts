@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Authorized, Body, CurrentUser, Get, JsonController, Post } from 'routing-controllers';
+import { Body, JsonController, Post } from 'routing-controllers';
 import { Inject, Service } from 'typedi';
 
 import Account from '@database/entities/Account';
@@ -11,8 +10,12 @@ import CreateAccountProps from '../types/CreateAccountProps';
 @Service()
 @JsonController('/account')
 export default class Accounts {
-  @Inject()
-  private AccountService: CreateAccountServices;
+  constructor(
+    @Inject()
+    private AccountService: CreateAccountServices,
+  ) {
+    // comment
+  }
 
   @Inject()
   @Post()

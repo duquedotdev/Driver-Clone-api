@@ -17,7 +17,7 @@ export const routes = (app: Express): void => {
     currentUserChecker: CurrentAccountChecker,
     cors: true,
     routePrefix: '/api',
-    development: true,
+    // development: true,
 
     // defaults: {
     //   nullResultCode: 404,

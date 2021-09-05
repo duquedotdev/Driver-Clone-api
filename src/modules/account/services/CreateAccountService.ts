@@ -29,11 +29,8 @@ export default class CreateAccountServices {
   }
 
   async create({ name, email, password }: CreateAccountProps): Promise<Account> {
-    const existsAccount = await this.accountRepository.findOne({ where: { name } });
     const existsEmail = await this.accountRepository.findOne({ where: { email } });
 
-    if (existsAccount)
-      throw new HttpStatusError(HttpStatus.BAD_REQUEST, 'Essa account já esta sendo utilizada por outra pessoa.');
     if (existsEmail)
       throw new HttpStatusError(HttpStatus.BAD_REQUEST, 'Este e-mail já esta sendo utilizado por outra pessoa.');
 
@@ -53,16 +50,17 @@ export default class CreateAccountServices {
 
     const registrationTemplate = path.resolve(__dirname, '..', 'views', 'registration_account.hbs');
 
-    this.emailService.sendMail({
+    await this.emailService.sendMail({
       to: {
         name: createAccount.name,
         email,
       },
-      subject: 'Bem-vindo ao Tibia - por favor, confirme sua conta',
+      subject: 'Bem-vindo ao Driver',
       templateData: {
         file: registrationTemplate,
         variables: {
           link: `${process.env.APP_WEB_URL}/confirm_account?token=`,
+          company_name: 'Driver',
         },
       },
     });
