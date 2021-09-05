@@ -7,7 +7,7 @@ export class AccountRoles1625928374369 implements MigrationInterface {
         name: 'accounts',
         columns: [
           { name: 'id', type: 'int', isGenerated: true, isPrimary: true, generationStrategy: 'increment' },
-          { name: 'name', type: 'varchar' },
+          { name: 'name', type: 'varchar', isNullable: true },
           { name: 'email', type: 'varchar', isUnique: true },
           { name: 'password', type: 'varchar' },
           { name: 'access', type: 'boolean', default: false },
