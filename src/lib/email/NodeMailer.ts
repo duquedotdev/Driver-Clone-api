@@ -40,7 +40,7 @@ export default class EtherealMailProvider {
 
     const message = await this.client.sendMail({
       from: {
-        name: from?.name ?? 'Api Tibia Service',
+        name: from?.name ?? 'Manoel Neto',
         address: from?.email ?? transport.user,
       },
       to: { name: to.name, address: to.email },
