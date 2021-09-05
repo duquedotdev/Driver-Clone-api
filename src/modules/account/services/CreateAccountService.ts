@@ -50,7 +50,7 @@ export default class CreateAccountServices {
 
     const registrationTemplate = path.resolve(__dirname, '..', 'views', 'registration_account.hbs');
 
-    await this.emailService.sendMail({
+    this.emailService.sendMail({
       to: {
         name: createAccount.name,
         email,
