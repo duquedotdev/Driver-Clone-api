@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsOptional, Length, Matches } from 'class-validator';
+import { IsEmail } from 'class-validator';
 
 export default class RecoveryAccountProps {
   @IsEmail(
