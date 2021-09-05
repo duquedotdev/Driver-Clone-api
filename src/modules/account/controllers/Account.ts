@@ -17,7 +17,6 @@ export default class Accounts {
     // comment
   }
 
-  @Inject()
   @Post()
   async store(@Body() account: CreateAccountProps): Promise<Account> {
     return this.AccountService.create(account);
