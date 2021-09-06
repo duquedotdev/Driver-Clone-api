@@ -49,6 +49,7 @@ jobs:
       #     commands: |
       #       (cd ~/app/api)
       #       yarn
+
       - name: Install Packages Remote Server
         uses: appleboy/ssh-action@master
         with:
@@ -58,7 +59,7 @@ jobs:
           # key: ${{secrets.SSH_KEY}}
           port: ${{secrets.SSH_PORT}}
           script: |
-            (cd ~/app/api)
+            cd ~/app/api
             yarn
           # yarn migration:run
           # pm2 restart crud_api
