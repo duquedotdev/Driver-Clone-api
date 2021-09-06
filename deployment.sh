@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Executong Comands"
-mpm install
+npm install
 #yarn
 #yarn migration:run
 
