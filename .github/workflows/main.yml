@@ -43,6 +43,7 @@ jobs:
           port: ${{secrets.SSH_PORT}}
           command: |
             cd ~/app/api
+            npm i -g yarn
             yarn
 
 
