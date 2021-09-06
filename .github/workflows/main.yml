@@ -44,12 +44,7 @@ jobs:
           username: ${{secrets.SSH_USER}}
           password: ${{secrets.SSH_PASS}}
           port: ${{secrets.SSH_PORT}}
-          script: |
-            npm install --global yarn
-            cd ~/app/api
-            yarn
-            yarn migrations:run
-            pm2 restart crud_api
+          script: sh script.sh
 
 
 
