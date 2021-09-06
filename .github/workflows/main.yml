@@ -35,6 +35,6 @@ jobs:
           password: ${{secrets.SSH_PASS}}
           port: ${{secrets.SSH_PORT}}
           souce: "., !node_modules"
-          target: "api"  
+          target: "~/app/api"  
 
 
