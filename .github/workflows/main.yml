@@ -32,10 +32,9 @@ jobs:
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USER}}
-          key: ${{secrets.SSH_KEY}}
+          password: ${{secrets.SSH_PASS}}
           port: ${{secrets.SSH_PORT}}
           souce: "., !node_modules"
-          target: "test"
-    
+          target: "test"  
 
 
