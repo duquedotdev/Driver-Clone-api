@@ -38,31 +38,20 @@ jobs:
           source: "., !node_modules"
           target: "~/app/api"
 
+
       # - name: Install Packages Remote Server
-      #   uses: docker://evaneos/ssh-action:0.1.0
+      #   uses: appleboy/ssh-action@master
       #   with:
-      #     hosts: ${{secrets.SSH_HOST}}
-      #     user: ${{secrets.SSH_USER}}
+      #     host: ${{secrets.SSH_HOST}}
+      #     username: ${{secrets.SSH_USER}}
       #     password: ${{secrets.SSH_PASS}}
       #     # key: ${{secrets.SSH_KEY}}
       #     port: ${{secrets.SSH_PORT}}
-      #     commands: |
-      #       (cd ~/app/api)
+      #     script: |
+      #       cd ~/app/api
       #       yarn
-
-      - name: Install Packages Remote Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{secrets.SSH_HOST}}
-          username: ${{secrets.SSH_USER}}
-          password: ${{secrets.SSH_PASS}}
-          # key: ${{secrets.SSH_KEY}}
-          port: ${{secrets.SSH_PORT}}
-          script: |
-            cd ~/app/api
-            yarn
-          # yarn migration:run
-          # pm2 restart crud_api
+      #       yarn migration:run
+      #       pm2 restart crud_api
 
 
 
