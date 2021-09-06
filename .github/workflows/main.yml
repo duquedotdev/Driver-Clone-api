@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run : yarn
 
+      # - name: Runing Test
+      #   run: yarn test
+
       - name: Build Aplication
         run: yarn build
 
@@ -44,10 +47,10 @@ jobs:
           # key: ${{secrets.SSH_KEY}}
           port: ${{secrets.SSH_PORT}}
           commands: |
-            (cd ~/app/api)
-            yarn
-            yarn migration:run
-            pm2 restart crud_api
+            cd ~/app/api &&
+            yarn &&
+            yarn migration:run &&
+            pm2 restart crud_api &&
       # - name: Install Packages Remote Server
       #   uses: appleboy/ssh-action@master
       #   with:
