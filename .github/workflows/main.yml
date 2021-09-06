@@ -46,9 +46,9 @@ jobs:
           port: 22
           script: |
             cd ~/app/api
-            sudo yarn
-            sudo yarn migrations:run
-            sudo pm2 restart crud_api
+            yarn
+            yarn migrations:run
+            pm2 restart crud_api
 
 
 
