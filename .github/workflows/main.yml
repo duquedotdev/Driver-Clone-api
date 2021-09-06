@@ -44,7 +44,6 @@ jobs:
           username: ${{secrets.SSH_USER}}
           password: ${{secrets.SSH_PASS}}
           port: ${{secrets.SSH_PORT}}
-          source: "., !node_modules"
           script: |
             cd ~/app/api
             yarn
