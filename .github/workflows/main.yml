@@ -35,15 +35,15 @@ jobs:
           target: "~/app/api"
 
       - name: Install Packages Remote Server
-        uses: appleboy/ssh-action@master
+        uses: fifsky/ssh-action@master
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USER}}
           password: ${{secrets.SSH_PASS}}
           port: ${{secrets.SSH_PORT}}
-          script: |
+          command: |
             cd ~/app/api
-            sudo sh deployment.sh
+            yarn
 
 
 
