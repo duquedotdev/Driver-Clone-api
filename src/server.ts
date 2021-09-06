@@ -1,16 +1,7 @@
 import 'reflect-metadata';
-import express from 'express';
 
 import { SERVER_PORT } from '@config/env';
 import { started } from '@shared/utils';
-import { routes } from './router';
-
-import './database';
-
-const server = express();
-
-server.use(express.json());
-
-routes(server);
+import { server } from './app';
 
 server.listen(SERVER_PORT, started);
