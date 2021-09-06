@@ -44,7 +44,11 @@ jobs:
           username: ${{secrets.SSH_USER}}
           password: ${{secrets.SSH_PASS}}
           port: ${{secrets.SSH_PORT}}
-          script: sudo sh ./script.sh
+          script: |
+            cd ~/app/api
+            sudo yarn
+            sudo yarn migrations:run
+            sudo pm2 restart crud_api
 
 
 
