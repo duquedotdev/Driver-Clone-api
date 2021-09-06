@@ -43,7 +43,7 @@ jobs:
           port: ${{secrets.SSH_PORT}}
           script: |
             cd ~/app/api
-            sh ./deployment.sh
+            deployment.sh
 
 
 
