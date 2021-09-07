@@ -10,7 +10,7 @@ import './database';
 
 const corsConfig = {
   origin: '*',
-  path: '/test',
+  // path: '/test',
   serveClient: false,
   // below are engine.IO options
   pingInterval: 10000,
@@ -30,6 +30,7 @@ const io = new Server(server, {
 
 io.on('connection', (socket: Socket) => {
   console.log('Client connected...', socket.id);
+  socket.emit('messages', 'Hello from server', socket.id);
   socket.on('login', (data) => {
     // console.log(data);
     socket.emit('messages', 'Hello from server', data);
