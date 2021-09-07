@@ -19,7 +19,6 @@ const corsConfig = {
 
 const app = express();
 const server = createServer(app);
-app.use(cors(corsConfig));
 
 app.use(express.json());
 

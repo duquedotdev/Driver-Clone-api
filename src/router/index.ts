@@ -16,6 +16,9 @@ export const routes = (app: Express): void => {
     authorizationChecker: AuthorizationChecker,
     currentUserChecker: CurrentAccountChecker,
     // cors: true,
+    cors: {
+      origin: '*',
+    },
     routePrefix: '/api',
     // development: true,
 
