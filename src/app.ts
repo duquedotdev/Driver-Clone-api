@@ -10,6 +10,11 @@ import './database';
 
 const corsConfig = {
   origin: '*',
+  path: '/test',
+  serveClient: false,
+  // below are engine.IO options
+  pingInterval: 10000,
+  pingTimeout: 5000,
 };
 
 const app = express();
