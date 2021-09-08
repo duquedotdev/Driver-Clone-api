@@ -21,7 +21,7 @@ export default class Account {
 
   @ManyToMany(() => Role)
   @JoinTable({
-    name: 'account_role',
+    name: 'account_roles',
     joinColumn: {
       name: 'account_id',
     },
