@@ -1,13 +1,13 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export class CreateRecoveryTable1626589214386 implements MigrationInterface {
+export class CreateRecoveryTable1631070569398 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
         name: 'account_recovery',
         columns: [
-          { name: 'id', type: 'int', isGenerated: true, isPrimary: true, generationStrategy: 'increment' },
-          { name: 'account_id', type: 'int', isNullable: true },
+          { name: 'id', type: 'bigint', isGenerated: true, isPrimary: true, generationStrategy: 'increment' },
+          { name: 'account_id', type: 'bigint', isNullable: true },
           { name: 'code', type: 'varchar' },
           { name: 'ip_address', type: 'varchar' },
           { name: 'checked', type: 'boolean', default: false },
