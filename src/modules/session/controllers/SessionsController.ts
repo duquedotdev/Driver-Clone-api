@@ -9,8 +9,12 @@ import { AuthenticateAccountService } from '../services/AuthenticateAccountServi
 @Service()
 @JsonController('/session')
 export default class SessionsController {
-  @Inject()
-  service!: AuthenticateAccountService;
+  constructor(
+    @Inject()
+    private service: AuthenticateAccountService,
+  ) {
+    // no
+  }
 
   @Post()
   async authenticate(@Body() auth: AuthRequest): Promise<AuthResponse> {
