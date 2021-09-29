@@ -16,6 +16,7 @@
     "migration:show": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:show",
     "migration:rollback": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert",
     "migration:drop-create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:drop && ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run",
+    "seed:rollback": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -c seed",
     "seed:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create -c seed -n",
     "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -c seed",
     "prepare": "husky install"

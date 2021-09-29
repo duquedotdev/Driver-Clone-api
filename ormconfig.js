@@ -1,20 +1,16 @@
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const connection = {
+  type: process.env.DB_TYPE,
   url: process.env.DB_URL || process.env.DATABASE_URL,
   host: process.env.DB_COMPOSE_HOST || process.env.DB_HOST,
   port: process.env.DB_PORT,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/migrations/*{.ts,.js}`],
-  entities: [`./${isDevelopment ? 'src' : 'dist'}/database/entities/*{.ts,.js}`],
-
-  cli: {
-    migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/migrations`,
-  },
-
   logging: process.env.DB_LOGGING_LEVEL ? process.env.DB_LOGGING_LEVEL.split(',') : undefined,
+
+  entities: [`./${isDevelopment ? 'src' : 'dist'}/database/entities/*{.ts,.js}`],
 };
 
 if (process.env.DB_SSL === 'true') {
@@ -24,12 +20,18 @@ if (process.env.DB_SSL === 'true') {
 module.exports = [
   {
     name: 'default',
-    type: 'postgres',
     ...connection,
+    migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/migrations/*{.ts,.js}`],
+    cli: {
+      migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/migrations`,
+    },
   },
   {
     name: 'seed',
-    type: 'postgres',
     ...connection,
+    migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/seeds/*{.ts,.js}`],
+    cli: {
+      migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/seeds`,
+    },
   },
 ];

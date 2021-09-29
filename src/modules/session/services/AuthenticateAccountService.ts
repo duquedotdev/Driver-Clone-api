@@ -26,6 +26,10 @@ export class AuthenticateAccountService {
       relations: ['roles'],
     });
 
+    // if (!account.active) {
+    //   throw new HttpStatusError(HttpStatus.UNAUTHORIZED, 'Email ou senha incorretos.');
+    // }
+
     if (!account) {
       throw new HttpStatusError(HttpStatus.UNAUTHORIZED, 'Email ou senha incorretos.');
     }

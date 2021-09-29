@@ -1,4 +1,6 @@
-import { Body, JsonController, Post } from 'routing-controllers';
+import { Request, Response } from 'express';
+
+import { Body, JsonController, Param, Params, Post, Req } from 'routing-controllers';
 import { Inject, Service } from 'typedi';
 
 import RecoveryPassword from '../services/RecoveryPassword';
@@ -15,7 +17,14 @@ export default class Recovery {
   }
 
   @Post()
-  async recovery(@Body() email: RecoveryAccountProps): Promise<any> {
-    return this.recoveryPassword.execute(email);
+  async recovery(@Body() email: RecoveryAccountProps, @Req() request: Request): Promise<any> {
+    const ip_address = request.ip.split(`:`).pop();
+    return this.recoveryPassword.execute(email, ip_address);
+  }
+
+  @Post('/:code')
+  async validate(@Req() request: Request, @Param('code') code: string): Promise<any> {
+    const ip_address = request.ip.split(`:`).pop();
+    return this.recoveryPassword.validate(code, ip_address);
   }
 }

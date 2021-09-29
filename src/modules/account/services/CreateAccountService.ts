@@ -11,6 +11,7 @@ import Role from '@database/entities/Role';
 import SendMail from '@lib/email/NodeMailer';
 
 import path from 'path';
+import { COMPANY_NAME } from '@config/env';
 import CreateAccountProps from '../types/CreateAccountProps';
 
 @Service()
@@ -31,8 +32,7 @@ export default class CreateAccountServices {
   async create({ name, email, password }: CreateAccountProps): Promise<Account> {
     const existsEmail = await this.accountRepository.findOne({ where: { email } });
 
-    if (existsEmail)
-      throw new HttpStatusError(HttpStatus.BAD_REQUEST, 'Este e-mail já esta sendo utilizado por outra pessoa.');
+    if (existsEmail) throw new HttpStatusError(HttpStatus.FORBIDDEN, 'Este e-mail já esta sendo utilizado.');
 
     const role = await this.roleRepository.findOne({
       where: { initials: Equal('USER') },
@@ -55,17 +55,19 @@ export default class CreateAccountServices {
         name: createAccount.name,
         email,
       },
-      subject: 'Bem-vindo ao Driver',
+      subject: `Bem-vindo ao ${COMPANY_NAME}`,
       templateData: {
         file: registrationTemplate,
         variables: {
-          link: `${process.env.APP_WEB_URL}/confirm_account?token=`,
-          company_name: 'Driver',
+          company_name: COMPANY_NAME,
+          link: `${process.env.APP_WEB_URL}/confirm_account?email=${email}`,
         },
       },
     });
 
     delete mewAccount.password;
+    delete mewAccount.created_at;
+    delete mewAccount.updated_at;
     delete mewAccount.roles;
 
     return createAccount;

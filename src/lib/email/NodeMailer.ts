@@ -1,4 +1,4 @@
-import { SMTP_HOST, SMTP_PASS, SMTP_PORT, SMTP_SECURE, SMTP_USER } from '@config/env';
+import { COMPANY_NAME, SMTP_HOST, SMTP_PASS, SMTP_PORT, SMTP_SECURE, SMTP_USER } from '@config/env';
 
 import nodemailer, { Transporter } from 'nodemailer';
 import { Inject, Service } from 'typedi';
@@ -40,7 +40,7 @@ export default class EtherealMailProvider {
 
     const message = await this.client.sendMail({
       from: {
-        name: from?.name ?? 'Manoel Neto',
+        name: from?.name ?? COMPANY_NAME,
         address: from?.email ?? transport.user,
       },
       to: { name: to.name, address: to.email },
@@ -48,7 +48,7 @@ export default class EtherealMailProvider {
       html: await this.templateProvide.parse(templateData),
     });
 
-    console.log('Message sent: %s', message.messageId);
+    return console.log('Message sent: %s', message.messageId);
     // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
   }
 }

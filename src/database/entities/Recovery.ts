@@ -4,44 +4,44 @@ import {
   PrimaryGeneratedColumn,
   ManyToMany,
   JoinTable,
-  DeleteDateColumn,
   CreateDateColumn,
+  DeleteDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-import Role from './Role';
+import Account from './Account';
 
-@Entity('accounts')
-export default class Account {
+@Entity('account_recovery')
+export default class account_recovery {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  name: string;
+  account_id: number;
 
   @Column()
-  email: string;
+  code: string;
 
   @Column()
-  password: string;
+  ip_address: string;
 
   @Column()
-  access: boolean;
+  checked: boolean;
 
   @Column()
-  active: boolean;
+  expires_in: Date;
 
-  @ManyToMany(() => Role)
+  @ManyToMany(() => Account)
   @JoinTable({
-    name: 'account_roles',
+    name: 'accounts',
     joinColumn: {
-      name: 'account_id',
+      name: 'id',
     },
     inverseJoinColumn: {
-      name: 'role_id',
+      name: 'account_id',
     },
   })
-  roles: Role[];
+  account: Account[];
 
   @CreateDateColumn()
   created_at: Date;
@@ -49,6 +49,6 @@ export default class Account {
   @UpdateDateColumn()
   updated_at: Date;
 
-  // @DeleteDateColumn()
-  // deleted_at: Date;
+  @DeleteDateColumn()
+  deleted_at: Date;
 }

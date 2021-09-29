@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { Express } from 'express';
+import { cors_config as origin } from '@config/cors';
 
 import { RoutingControllersOptions, useExpressServer, useContainer } from 'routing-controllers';
 
@@ -17,7 +18,7 @@ export const routes = (app: Express): void => {
     currentUserChecker: CurrentAccountChecker,
     // cors: true,
     cors: {
-      origin: '*',
+      origin,
     },
     routePrefix: '/api',
     // development: true,

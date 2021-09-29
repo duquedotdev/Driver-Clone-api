@@ -14,7 +14,7 @@ export class CreateAccount1631070488396 implements MigrationInterface {
           { name: 'active', type: 'boolean', default: false },
 
           { name: 'created_at', type: 'timestamp', default: 'now()' },
-          { name: 'updated_at', type: 'timestamp', default: 'now()' },
+          { name: 'updated_at', type: 'timestamp', default: null, isNullable: true },
           { name: 'deleted_at', type: 'timestamp', default: null, isNullable: true },
         ],
       }),
