@@ -1,6 +1,5 @@
 import { DeepPartial, Equal, Repository } from 'typeorm';
 import { Inject, Service } from 'typedi';
-import * as Crypto from 'crypto';
 
 import { HttpStatus, HttpStatusError } from '@shared/errors';
 
@@ -12,6 +11,7 @@ import SendMail from '@lib/email/NodeMailer';
 
 import path from 'path';
 import { COMPANY_NAME } from '@config/env';
+import { EncryptPass } from '@shared/utils';
 import CreateAccountProps from '../types/CreateAccountProps';
 
 @Service()
@@ -42,7 +42,7 @@ export default class CreateAccountServices {
     const mewAccount: DeepPartial<Account> = {
       name,
       email,
-      password: Crypto.createHash('sha1').update(password).digest('hex'),
+      password: EncryptPass(password),
       roles: [role],
     };
 

@@ -10,7 +10,7 @@ import Account from '@database/entities/Account';
 import Recovery from '@database/entities/Recovery';
 import EmailSender from '@lib/email/NodeMailer';
 
-import { GenCode } from '@shared/utils/generateCode';
+import { GenCode } from '@shared/utils';
 import RecoveryAccountProps from '../types/RecoveryAccountProps';
 
 @Service()

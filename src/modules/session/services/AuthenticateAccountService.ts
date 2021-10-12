@@ -8,6 +8,7 @@ import Account from '@database/entities/Account';
 
 import { TOKEN_EXPIRY, TOKEN_SECRET } from '@config/env';
 import { HttpStatus, HttpStatusError } from '@shared/errors';
+import { EncryptPass } from '@shared/utils';
 import { AuthRequest } from '../types/AuthRequest';
 import { AuthResponse } from '../types/AuthResponse';
 
@@ -34,9 +35,7 @@ export class AuthenticateAccountService {
       throw new HttpStatusError(HttpStatus.UNAUTHORIZED, 'Email ou senha incorretos.');
     }
 
-    const passwordHashed = Crypto.createHash('sha1').update(password).digest('hex');
-
-    if (account.password !== passwordHashed) {
+    if (account.password !== EncryptPass(password)) {
       throw new HttpStatusError(HttpStatus.UNAUTHORIZED, 'Email ou senha incorretos.');
     }
 
