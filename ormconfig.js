@@ -1,7 +1,6 @@
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const connection = {
-  type: process.env.DB_TYPE,
   url: process.env.DB_URL || process.env.DATABASE_URL,
   host: process.env.DB_COMPOSE_HOST || process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -21,6 +20,6 @@ if (process.env.DB_SSL === 'true') {
 
 module.exports = {
     name: 'default',
+    type: 'postgres',
     ...connection,
-
   }
