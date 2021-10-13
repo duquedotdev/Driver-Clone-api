@@ -19,7 +19,7 @@ if (process.env.DB_SSL === 'true') {
 
 module.exports = [
   {
-    name: 'default',
+    // name: 'default',
     ...connection,
     migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/migrations/*{.ts,.js}`],
     cli: {
