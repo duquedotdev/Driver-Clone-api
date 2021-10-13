@@ -2,9 +2,8 @@ import { InjectRepository } from 'typeorm-typedi-extensions';
 import { Service } from 'typedi';
 import { Repository } from 'typeorm';
 import { sign } from 'jsonwebtoken';
-import * as Crypto from 'crypto';
 
-import Account from '@database/entities/Account';
+import { Account } from '@database/entities/Account';
 
 import { TOKEN_EXPIRY, TOKEN_SECRET } from '@config/env';
 import { HttpStatus, HttpStatusError } from '@shared/errors';

@@ -1,7 +1,7 @@
 import { Body, JsonController, Post } from 'routing-controllers';
 import { Inject, Service } from 'typedi';
 
-import Account from '@database/entities/Account';
+import { Account } from '@database/entities';
 
 import CreateAccountServices from '../services/CreateAccountService';
 

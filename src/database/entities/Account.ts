@@ -9,10 +9,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import Role from './Role';
+import { Role } from './Role';
 
 @Entity('accounts')
-export default class Account {
+export class Account {
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -4,8 +4,7 @@ import { Inject, Service } from 'typedi';
 import { HttpStatus, HttpStatusError } from '@shared/errors';
 
 import { InjectRepository } from 'typeorm-typedi-extensions';
-import Account from '@database/entities/Account';
-import Role from '@database/entities/Role';
+import { Account, Role } from '@database/entities';
 
 import SendMail from '@lib/email/NodeMailer';
 

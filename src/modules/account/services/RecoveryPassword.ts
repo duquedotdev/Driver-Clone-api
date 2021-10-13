@@ -6,8 +6,7 @@ import path from 'path';
 
 import { HttpStatus, HttpStatusError } from '@shared/errors';
 
-import Account from '@database/entities/Account';
-import Recovery from '@database/entities/Recovery';
+import { Account, Recovery } from '@database/entities';
 import EmailSender from '@lib/email/NodeMailer';
 
 import { GenCode } from '@shared/utils';
