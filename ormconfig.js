@@ -1,6 +1,7 @@
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const connection = {
+  type: process.env.DB_TYPE,
   url: process.env.DB_URL || process.env.DATABASE_URL,
   host: process.env.DB_COMPOSE_HOST || process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -11,15 +12,20 @@ const connection = {
 
   entities: [`./${isDevelopment ? 'src' : 'dist'}/database/entities/*{.ts,.js}`],
 
-
+  migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/migrations/*{.ts,.js}`],
+  cli: {
+    migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/migrations`,
+  },
 };
 
 if (process.env.DB_SSL === 'true') {
   connection.ssl = { rejectUnauthorized: false };
 }
 
-module.exports = {
+module.exports =
+  {
     name: 'default',
     type: 'postgres',
     ...connection,
   }
+
