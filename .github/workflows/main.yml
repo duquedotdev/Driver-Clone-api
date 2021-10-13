@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -19,12 +19,12 @@ jobs:
           node-version: 14.x
 
       - name: Install dependencies
-        run : yarn
+        run: yarn
 
-      # - name: Runing Test
+      # - name: Running Test
       #   run: yarn test
 
-      - name: Build Aplication
+      - name: Build Application
         run: yarn build
 
       - name: Copy Files
@@ -35,25 +35,23 @@ jobs:
           password: ${{secrets.SSH_PASS}}
           # key: ${{secrets.SSH_KEY}}
           port: ${{secrets.SSH_PORT}}
-          source: "., !node_modules"
-          target: "~/app/api"
+          source: '., !node_modules, !src'
+          target: '~/app/api'
 
-
-      # - name: Install Packages Remote Server
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{secrets.SSH_HOST}}
-      #     username: ${{secrets.SSH_USER}}
-      #     password: ${{secrets.SSH_PASS}}
-      #     # key: ${{secrets.SSH_KEY}}
-      #     port: ${{secrets.SSH_PORT}}
-      #     script: |
-      #       cd ~/app/api
-      #       yarn
-      #       yarn migration:run
-      #       pm2 restart crud_api
-
-
-
-
-
+      - name: Install Packages Remote Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USER}}
+          password: ${{secrets.SSH_PASS}}
+          # key: ${{secrets.SSH_KEY}}
+          port: ${{secrets.SSH_PORT}}
+          script: |
+            cd ~/app/api
+            yarn
+            yarn migration:run
+          # script: |
+          #   cd ~/app/api
+          #   yarn
+          #   yarn migration:run
+          #   pm2 restart crud_api
