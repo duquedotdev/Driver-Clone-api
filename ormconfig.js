@@ -11,27 +11,16 @@ const connection = {
   logging: process.env.DB_LOGGING_LEVEL ? process.env.DB_LOGGING_LEVEL.split(',') : undefined,
 
   entities: [`./${isDevelopment ? 'src' : 'dist'}/database/entities/*{.ts,.js}`],
+
+
 };
 
 if (process.env.DB_SSL === 'true') {
   connection.ssl = { rejectUnauthorized: false };
 }
 
-module.exports = [
-  {
-    // name: 'default',
+module.exports = {
+    name: 'default',
     ...connection,
-    migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/migrations/*{.ts,.js}`],
-    cli: {
-      migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/migrations`,
-    },
-  },
-  {
-    name: 'seed',
-    ...connection,
-    migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/seeds/*{.ts,.js}`],
-    cli: {
-      migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/seeds`,
-    },
-  },
-];
+
+  }
