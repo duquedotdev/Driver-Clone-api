@@ -48,8 +48,8 @@ jobs:
           port: ${{secrets.SSH_PORT}}
           script: |
             cd ~/app/api
-            yarn
-            yarn migration:run
+            npm install
+            mpx run migration:run
           # script: |
           #   cd ~/app/api
           #   yarn
