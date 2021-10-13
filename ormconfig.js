@@ -24,7 +24,7 @@ if (process.env.DB_SSL === 'true') {
 
 module.exports =
   {
-    name: 'default',
+    // name: 'default',
     type: 'postgres',
     ...connection,
   }
