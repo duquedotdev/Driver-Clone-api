@@ -11,6 +11,11 @@ const connection = {
   logging: process.env.DB_LOGGING_LEVEL ? process.env.DB_LOGGING_LEVEL.split(',') : undefined,
 
   entities: [`./${isDevelopment ? 'src' : 'dist'}/database/entities/*{.ts,.js}`],
+
+  migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/migrations/*{.ts,.js}`],
+  cli: {
+    migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/migrations`,
+  },
 };
 
 if (process.env.DB_SSL === 'true') {
@@ -19,12 +24,9 @@ if (process.env.DB_SSL === 'true') {
 
 module.exports = [
   {
-    name: 'default',
+    name: 'postgres',
     ...connection,
-    migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/migrations/*{.ts,.js}`],
-    cli: {
-      migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/migrations`,
-    },
+
   },
   {
     name: 'seed',
