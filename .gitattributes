@@ -1,2 +1,2 @@
-*.ts           eol=lf
-*.js           eol=lf
+*.ts           eol=crlf
+*.js           eol=crlf
