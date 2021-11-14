@@ -43,7 +43,8 @@ jobs:
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USER}}
-          key: ${{secrets.SSH_KEY}}
+          password: ${{secrets.SSH_PASS}}
+          # key: ${{secrets.SSH_KEY}}
           port: ${{secrets.SSH_PORT}}
           script: |
             pm2 restart crude-api
