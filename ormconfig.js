@@ -22,18 +22,4 @@ if (process.env.DB_SSL === 'true') {
   connection.ssl = { rejectUnauthorized: false };
 }
 
-module.exports = [
-  {
-    name: 'postgres',
-    ...connection,
-
-  },
-  {
-    name: 'seed',
-    ...connection,
-    migrations: [`./${isDevelopment ? 'src' : 'dist'}/database/seeds/*{.ts,.js}`],
-    cli: {
-      migrationsDir: `./${isDevelopment ? 'src' : 'dist'}/database/seeds`,
-    },
-  },
-];
+module.exports = connection;
