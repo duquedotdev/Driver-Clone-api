@@ -38,20 +38,30 @@ jobs:
           source: '., !node_modules, !src'
           target: '~/app/api'
 
-      - name: Install Packages Remote Server
+      - name: multiple command
         uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USER}}
-          password: ${{secrets.SSH_PASS}}
-          # key: ${{secrets.SSH_KEY}}
+          key: ${{secrets.SSH_KEY}}
           port: ${{secrets.SSH_PORT}}
           script: |
-            cd ~/app/api
-            npm install
-            mpx run migration:run
-          # script: |
-          #   cd ~/app/api
-          #   yarn
-          #   yarn migration:run
-          #   pm2 restart crud_api
+            pm2 restart crude-api
+
+      # - name: Install Packages Remote Server
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{secrets.SSH_HOST}}
+      #     username: ${{secrets.SSH_USER}}
+      #     password: ${{secrets.SSH_PASS}}
+      #     # key: ${{secrets.SSH_KEY}}
+      #     port: ${{secrets.SSH_PORT}}
+      #     script: |
+      #       cd ~/app/api
+      #       npm install
+      #       mpx run migration:run
+      #     # script: |
+      #     #   cd ~/app/api
+      #     #   yarn
+      #     #   yarn migration:run
+      #     #   pm2 restart crud_api
