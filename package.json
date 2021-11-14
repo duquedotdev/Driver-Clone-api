@@ -19,6 +19,7 @@
     "seed:rollback": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -c seed",
     "seed:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create -c seed -n",
     "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -c seed",
+    "eslint": "eslint . --fix --config .eslintrc.json --ext \".js,.ts\"",
     "prepare": "husky install"
   },
   "devDependencies": {

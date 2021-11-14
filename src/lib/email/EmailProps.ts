@@ -2,6 +2,7 @@ import TemplateProps from '@lib/templates/TemplateProps';
 
 interface IMailContent {
   name: string;
+
   email: string;
 }
 
