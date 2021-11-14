@@ -38,17 +38,6 @@ jobs:
           source: '., !node_modules, !src'
           target: '~/app/api'
 
-      - name: multiple command
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{secrets.SSH_HOST}}
-          username: ${{secrets.SSH_USER}}
-          password: ${{secrets.SSH_PASS}}
-          # key: ${{secrets.SSH_KEY}}
-          port: ${{secrets.SSH_PORT}}
-          script: |
-            sudo npx pm2 restart crude-api
-
       # - name: Install Packages Remote Server
       #   uses: appleboy/ssh-action@master
       #   with:
